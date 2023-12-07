@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+<body>
+<form action="/myapp/New_conn_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    {% csrf_token %}
+  <table width="480" height="609" border="1">
+    <tr>
+      <td width="225">Name </td>
+      <td width="239">
+      <input type="text" name="textfield" id="textfield" pattern="[A-Z a-z]+"required/></td>
+    </tr>
+    <tr>
+      <td>Gender </td>
+      <td><p>
+        <label>
+          <input type="radio" name="RadioGroup1" value="male" id="RadioGroup1_0" />
+          Male</label>
+        <br/>
+        <label>
+          <input type="radio" name="RadioGroup1" value="female" id="RadioGroup1_1" />
+          Female</label>
+        <br />
+        <label>
+          <input type="radio" name="RadioGroup1" value="Others" id="RadioGroup1_2" />
+          Others</label>
+        <br />
+      </p></td>
+    </tr>
+    <tr>
+      <td>DOB</td>
+      <td>
+      <input type="date"  min="1900-01-01" max="2015-12-31" name="textfield2" id="textfield2" required/></td>
+    </tr>
+          <td width="171">Area:</td>
+      <td width="229"><label for="select"></label>
+        <select name="select" id="select">
+            {% for i in data %}
+                <option value="{{ i.id }}">{{ i.Place }}-{{ i.District.Dis_name }}</option>
+            {% endfor %}
+      </select></td>
+{#    <tr>#}
+{#      <td>Place</td>#}
+{#      <td><input type="text" name="textfield4" id="textfield4" /></td>#}
+{#    </tr>#}
+    <tr>
+      <td>Panchayath</td>
+      <td><input type="text" name="textfield5" id="textfield5" /></td>
+    </tr>
+    <tr>
+      <td>Village</td>
+      <td><input type="text" name="textfield6" id="textfield6" /></td>
+    </tr>
+{#    <tr>#}
+{#      <td>District</td>#}
+{#      <td><input type="text" name="textfield7" id="textfield7" /></td>#}
+{#    </tr>#}
+    <tr>
+      <td>Pincode</td>
+      <td><input type="text" name="textfield8" id="textfield8" pattern="[0-9]{6}" max="6" required/></td>
+    </tr>
+    <tr>
+      <td>Photo</td>
+      <td><input type="file" name="fileField" id="fileField" required/></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><input type="text" name="textfield10" id="textfield10" required/></td>
+    </tr>
+    <tr>
+      <td>Phone</td>
+      <td><input type="text" name="textfield11" id="textfield11" pattern="[6789][0-9]{9}"max="10" required/></td>
+    </tr>
+    <tr>
+      <td>Password</td>
+      <td><input type="text" name="textfield16" id="textfield16" /></td>
+    </tr>
+    <tr>
+      <td>Confirm password</td>
+      <td><input type="text" name="textfield17" id="textfield17" /></td>
+    </tr>
+      <tr align="center">
+          <td colspan="2"><B>PAYMENT DETAILS</B></td>
+    </tr>
+      <tr>
+      <td width="157">Account No :</td>
+      <td width="195"><label for="textfield"></label>
+      <input type="text" name="textfield18" id="textfield18" required/></td>
+    </tr>
+    <tr>
+      <td>IFSC:</td>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield19" id="textfield19" required/></td>
+    </tr>
+    <tr>
+      <td>CVV :</td>
+      <td><label for="textfield3"></label>
+      <input type="text" name="textfield20" id="textfield20" pattern="[0-9]+" maxlength="3" minlength="3"/></td>
+    </tr>
+    <tr>
+      <td>Amount :</td>
+      <td><label for="textfield3"></label>
+      <input type="text" name="textfield21" id="textfield21" value="750" readonly/></td>
+    </tr>
+    <tr>
+    <tr>
+      <td height="26" colspan="2"><div align="center">
+        <input type="submit" name="button" id="button" value="SUBMIT" />
+      </div></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

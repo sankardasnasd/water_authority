@@ -1,0 +1,29 @@
+{% extends 'User/user_home_index.html'%}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+ {% csrf_token %}
+  <table class="pull-left">
+    <tr>
+      <td><input type="text" name="textfield2" id="textfield2" class="form-control"/></td>
+      <td><input type="submit" class="btn btn-success" name="button" id="button" value="Search"/></td>
+    </tr>
+  </table><br>
+  <table class="table table-bordered ">
+    <tr>
+      <th >S.No</th>
+      <th >Reader INFO</th>
+        <th >&nbsp;</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+        <td width="50px">&nbsp;{{ forloop.counter }}</td>
+        <td><img src="{{ i.METRERREADER.Photo }}" width="100px"height="100px"/><br>{{ i.METRERREADER.Name }}<br>{{ i.METRERREADER.District }}<br>{{ i.METRERREADER.Place }}</td>
+        <td width="50px"><a class="btn btn-outline-danger" href="/myapp/complaintform/{{ i.METRERREADER.id }}#tab">Report</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

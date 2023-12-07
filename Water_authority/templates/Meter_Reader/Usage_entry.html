@@ -1,0 +1,52 @@
+{% extends 'Meter_Reader/reader_home_index.html'%}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/Usage_entry_post/#tab">
+    {% csrf_token %}
+
+    <input type="hidden" name="id3" value="{{ id }}">
+
+
+  <table class="table table-bordered table-hover">
+          <tr>
+      <td width="140">Month:</td>
+      <td width="250">
+        <select name="select1" id="select" class="form-control">
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+      </select></td>
+    </tr>
+                <tr>
+      <td width="140">Year:</td>
+      <td width="250">
+        <select name="select2" id="select2" class="form-control">
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+      </select></td>
+    </tr>
+    <tr>
+      <td>Usage</td>
+      <td>
+      <input class="form-control" type="text" name="textfield" id="textfield" pattern="[0-9]+" required/></td>
+    </tr>
+    <tr>
+      <td colspan="2"><div align="center">
+        <input class="btn btn-success" type="submit" name="button" id="button" value="Submit" />
+      </div>        <div align="center"></div></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}
+</body>
+

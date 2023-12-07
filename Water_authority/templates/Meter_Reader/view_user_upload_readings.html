@@ -1,0 +1,41 @@
+{% extends 'Meter_Reader/reader_home_index.html'%}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/Usage_entry/">
+    {% csrf_token %}
+  <table class="pull-left table-borderless">
+    <tr>
+      <td>From:</td>
+      <td>
+        <input type="date" name="textfield" id="textfield" class="form-control" required/></td>
+      <td>To:</td>
+      <td>
+        <input type="date" name="textfield2" id="textfield2" class="form-control" required/></td>
+      <td><input class="btn btn-success" type="submit" name="button" id="button" value="Search" /></td>
+    </tr>
+  </table><br>
+  <table class="table table-bordered">
+    <tr>
+      <th >S.No</td>
+      <th >Date</td>
+      <th >User Info</td>
+      <th >Photo</td>
+      <th >&nbsp;</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td width="50px">&nbsp;{{ forloop.counter }}</td>
+      <td>{{ i.Date }}</td>
+      <td>&nbsp;{{ i.USER.Name }}<br>{{ i.USER.AREA.District.Dis_name }}<br>{{ i.USER.AREA.Place }}</td>
+           <td>
+        <input type="image" name="imageField" id="imageField" img src="{{ i.Photo }}" width="200px"height="200px"/>
+      </td>
+      <td width="50px"><a class="btn btn-success" href="/myapp/Usage_entry/{{ i.USER.id }}#tab">Confirm</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+{% endblock %}
+</body>
+

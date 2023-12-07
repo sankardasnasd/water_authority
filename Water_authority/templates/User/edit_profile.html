@@ -1,0 +1,83 @@
+{% extends 'User/user_home_index.html'%}
+{% block body %}
+<body>
+<div class="col-md-12">
+<form action="/myapp/edit_profile_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    {% csrf_token %}
+  <table align="center" style="width:50%" class="table table-hover table-bordered">
+    <tr>
+      <td width="225">Name </td>
+      <td width="239">
+      <input type="text" name="textfield" id="textfield" value="{{ data.Name }}"class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>Gender </td>
+      <td><p>
+        <label>
+          <input type="radio" name="RadioGroup1" value="male" id="RadioGroup1_0" {% if data.Gender == 'male' %}checked{% endif %}/>
+          Male</label>
+        <br />
+        <label>
+          <input type="radio" name="RadioGroup1" value="female" id="RadioGroup1_1" {% if data.Gender == 'female' %}checked{% endif %}/>
+          Female</label>
+        <br />
+        <label>
+          <input type="radio" name="RadioGroup1" value="Others" id="RadioGroup1_2" {% if data.Gender == 'others' %}checked{% endif %} />
+          Others</label>
+        <br />
+      </p></td>
+    </tr>
+    <tr>
+      <td>DOB</td>
+      <td>
+      <input type="date" name="textfield2" id="textfield2" value="{{ data.Dob }}" class="form-control"/></td>
+    </tr>
+          <td width="171">Area:</td>
+      <td width="229">
+        <select name="select" id="select" class="form-control">
+            {% for i in data1 %}
+                <option value="{{ i.id }}" {% if data.AREA.id == i.id %} selected {% endif %}>{{ i.Place }}-{{ i.District.Dis_name }}</option>
+            {% endfor %}
+      </select></td>
+{#    <tr>#}
+{#      <td>Place</td>#}
+{#      <td><input type="text" name="textfield4" id="textfield4" /></td>#}
+{#    </tr>#}
+    <tr>
+      <td>Panchayath</td>
+      <td><input type="text" name="textfield5" id="textfield5" value="{{ data.Panchayath }}" class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>Village</td>
+      <td><input type="text" name="textfield6" id="textfield6" value="{{ data.Village }}" class="form-control"/></td>
+    </tr>
+{#    <tr>#}
+{#      <td>District</td>#}
+{#      <td><input type="text" name="textfield7" id="textfield7" /></td>#}
+{#    </tr>#}
+    <tr>
+      <td>Pincode</td>
+      <td><input type="text" name="textfield8" id="textfield8" value="{{ data.Pincode }}" class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>Photo</td>
+      <td><img src="{{ data.Photo }}" width="100px"height="100px"/><input type="file" name="fileField" id="fileField" value="{{ data.Photo }}" class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><input type="text" name="textfield10" id="textfield10" value="{{ data.Email }}" class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>Phone</td>
+      <td><input type="text" name="textfield11" id="textfield11" value="{{ data.Phone }}" class="form-control"/></td>
+    </tr>
+    <tr>
+      <td height="26" colspan="2"><div align="center">
+        <input class="btn btn-success" type="submit" name="button" id="button" value="SUBMIT" />
+      </div></td>
+    </tr>
+  </table>
+</form>
+</div>
+</body>
+{% endblock %}

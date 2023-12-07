@@ -1,0 +1,38 @@
+{% extends 'Meter_Reader/reader_home_index.html'%}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/view_notification_post_meter/#tab">
+    {% csrf_token %}
+  <table class="pull-left">
+    <tr>
+      <td>From :</td>
+      <td>
+        <input type="date" name="textfield" id="textfield" class="form-control" required/></td>
+      <td>To :</td>
+      <td>
+        <input type="date" name="textfield2" id="textfield2" class="form-control" required/></td>
+      <td><input class="btn btn-success" type="submit" name="button" id="button" value="Search"  /></td>
+    </tr>
+  </table><br>
+  <table class="table table-bordered table-hover">
+    <tr>
+      <th>S.No</td>
+      <th>Date</td>
+      <th>Notification</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td width="50px">&nbsp;{{ forloop.counter }}</td>
+      <td width="130px">&nbsp;{{ i.Date }}</td>
+      <td>&nbsp;{{ i.Notification }}</td>
+{#      <td><a href="/myapp/Edit_notification/{{ i.id }}">Edit</a></td>#}
+{#      <td><a href="/myapp/delete_notification/{{ i.id }}"onclick="return confirm('Are You Sure')">Delete</a></td>#}
+
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+{% endblock %}
+</body>
+

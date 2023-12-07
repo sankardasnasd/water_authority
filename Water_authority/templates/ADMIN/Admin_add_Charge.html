@@ -1,0 +1,27 @@
+{% extends 'ADMIN/admin_home_index.html'%}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/Admin_add_Charge_post/">
+    {% csrf_token %}
+  <table class="table table-hover table-bordered">
+    <tr>
+      <td width="180px">From Unit</td>
+      <td >
+      <input type="text" name="textfield" id="textfield" class="form-control" pattern="[0-9]+"  required/></td>
+    </tr>
+    <tr>
+      <td>To Unit</td>
+      <td><input type="text" name="textfield2" id="textfield2" class="form-control" pattern="[0-9]+"  required/></td>
+    </tr>
+    <tr>
+      <td>Amount</td>
+      <td><input type="text" name="textfield3" id="textfield3" class="form-control" pattern="[0-9.]+"  required/></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="button" id="button" value="ADD" class="btn btn-success"/></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'User/user_home_index.html'%}
+{% block body %}
+<body>
+<div class="col-md-12">
+<form id="form1" name="form1" method="post" action="">
+    {% csrf_token %}
+  <table align="center" style="width:50%;" class="table table-bordered table-hover" width="50%">
+    <tr>
+      <td colspan="2"><div align="center">
+        <input type="image" name="imageField" id="imageField" img src="{{ data.Photo }}" width="200px"height="200px"/>
+      </div></td>
+    </tr>
+    <tr>
+      <td>Name </td>
+      <td>{{ data.Name }}</td>
+    </tr>
+    <tr>
+      <td>Phone</td>
+      <td>{{ data.Phone }}</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>{{ data.Email }}</td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td>{{ data.Gender }}</td>
+    </tr>
+    <tr>
+      <td>DOB</td>
+      <td>{{ data.Dob }}</td>
+    </tr>
+    <tr>
+      <td>District</td>
+      <td>{{ data.AREA.District.Dis_name }}</td>
+    </tr>
+    <tr>
+      <td>Place</td>
+      <td>{{ data.AREA.Place }}</td>
+    </tr>
+    <tr>
+      <td>Panchayath</td>
+      <td>{{ data.Panchayath }}</td>
+    </tr>
+    <tr>
+      <td>Village</td>
+      <td>{{ data.Village }}</td>
+    </tr>
+    <tr>
+      <td>Pincode</td>
+      <td>{{ data.Pincode }}</td>
+    </tr>
+    <tr>
+      <td>Connection Status</td>
+      <td style="color:green">{{ data.ConnectionsStatus }}</td>
+    </tr>
+    <tr>
+      <td align="center" colspan="2"><a class="btn btn-success" href="/myapp/edit_profile/">EDIT</a></td>
+    </tr>
+  </table>
+</form>
+</div>
+</body>
+{% endblock %}

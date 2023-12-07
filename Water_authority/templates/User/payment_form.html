@@ -1,0 +1,33 @@
+{% extends 'User/user_home_index.html'%}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/payment_form_post/">
+    {% csrf_token %}
+  <table class="table table-hover table-bordered">
+    <tr>
+      <td>Amount&nbsp; &nbsp; &nbsp; &nbsp;: </td>
+      <td>
+      <input type="text" name="textfield" id="textfield" readonly value="{{ amnt }}" class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>Account No :</td>
+      <td>
+      <input type="text" name="textfield2" id="textfield2" class="form-control" required/></td>
+    </tr>
+    <tr>
+      <td>IFSC&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :</td>
+      <td>
+      <input type="text" name="textfield3" id="textfield3" class="form-control" required/></td>
+    </tr>
+    <tr>
+      <td>CVV&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  :</td>
+      <td>
+      <input type="text" name="textfield4" pattern="[0-9]+" id="textfield4" class="form-control" maxlength="3" minlength="3"/></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input class="btn btn-success" type="submit" name="button" id="button" value="PAY" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

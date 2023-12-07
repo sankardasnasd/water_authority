@@ -1,0 +1,30 @@
+{% extends 'User/user_home_index.html'%}
+{% block body %}
+<body>
+<div class="col-md-12">
+    <form id="form1" name="form1" method="post" action="/myapp/user_change_pass_post/">
+    {% csrf_token %}
+  <table align="center" style="width:50%" class="table table-hover table-bordered">
+    <tr>
+      <td width="175">Old password :</td>
+      <td>
+        <input type="text" name="textfield" id="textfield" class="form-control" required/></td>
+    </tr>
+    <tr>
+      <td>New password :</td>
+      <td>
+        <input type="text" name="textfield2" id="textfield2" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/></td>
+    </tr>
+    <tr>
+      <td>Confirm password :</td>
+      <td>
+        <input type="text" name="textfield3" id="textfield3" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input class="btn btn-success" type="submit" name="button" id="button" value="Submit" /></td>
+    </tr>
+  </table>
+    </form>
+</div>
+</body>
+{% endblock %}

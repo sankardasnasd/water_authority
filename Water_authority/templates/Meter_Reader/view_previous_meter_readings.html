@@ -1,0 +1,50 @@
+{% extends 'Meter_Reader/reader_home_index.html'%}
+{% block body %}
+
+<body>
+
+<form id="form1" name="form1" method="post" action="/myapp/view_previous_meter_readings_post/#tab">
+  <table class="pull-left">
+      {% csrf_token %}
+    <tr>
+      <td>From</td>
+      <td>
+        <input type="date" name="textfield" id="textfield" class="form-control" required/></td>
+      <td>To</td>
+      <td>
+        <input type="date" name="textfield2" id="textfield2" class="form-control" required/></td>
+      <td><input class="btn btn-success" type="submit" name="button" id="button" value="Search" /></td>
+    </tr>
+  </table><br>
+  <table class="table table-bordered table-hover">
+    <tr>
+      <th>S.No</td>
+      <th>Date </td>
+      <th>User Info </td>
+      <th>Usage</td>
+      <th>Amount</td>
+      <th>Payment Status</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td width="50px">&nbsp;{{ forloop.counter }}</td>
+      <td>{{ i.Date }}</td>
+      <td>&nbsp;{{ i.USER.Name }}</td>
+      <td>{{ i.Usage}}</td>
+      <td>&nbsp;{{ i.Amount}}</td>
+      <td>
+          {% if i.Payment_status == 'Pending' %}
+          <a class="danger">Pending</a>
+          {% else %}
+      {{ i.Payment_status }}
+      {% endif %}</td>
+{#          {{ i.Payment_status}}#}
+
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+{% endblock %}
+
+</body>
+

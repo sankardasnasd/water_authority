@@ -1,0 +1,41 @@
+{% extends 'Meter_Reader/reader_home_index.html'%}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/search_customer_usage_entry_post/#tab">
+ {% csrf_token %}
+<input type="hidden" name="id" value="{{ id }}">
+  <table class="pull-left">
+    <tr>
+      <td>
+      <input type="text" name="textfield" id="textfield" class="form-control" required/></td>
+      <td><input class="btn btn-success" type="submit" name="button" id="button" value="Search" /></td>
+    </tr>
+  </table><br>
+  <table class="table table-bordered table-hover">
+    <tr>
+      <td>S.No</td>
+      <td>Name</td>
+      <td>Photo</td>
+      <td>Email</td>
+      <td>Gender</td>
+      <td>DOB</td>
+      <td>Address</td>
+      <td>&nbsp;</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.Name }}</td>
+      <td>&nbsp;<img src="{{ i.Photo }}" width="100px"height="100px"/></td>
+      <td>{{ i.Email }}</td>
+      <td>{{ i.Gender }}</td>
+      <td>&nbsp;{{ i.Dob }}</td>
+      <td>&nbsp;{{ i.AREA.Place }}<br>{{ i.AREA.District.Dis_name}}<br>{{ i.Pincode }}</td>
+      <td><a class="btn btn-success" href="/myapp/Usage_entry/{{ i.id }}#tab">Enter Usage</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+{% endblock %}
+</body>

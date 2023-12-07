@@ -1,0 +1,21 @@
+{% extends 'ADMIN/admin_home_index.html'%}
+{% block body %}
+<form id="form1" name="form1" method="post" action="">
+    {% csrf_token %}
+  <table class="table table-bordered table-hover">
+    <tr>
+      <th >SL.No</th>
+      <th >District name</th>
+      <td>&nbsp;</td>
+    </tr>
+ {% for i in data %}
+    <tr>
+      <td width="50px">&nbsp;{{ forloop.counter }}</td>
+        <td>&nbsp;{{ i.Dis_name }}</td>
+      <td width="50px"><a href="/myapp/delete_District/{{ i.id }}"onclick="return confirm('Are You Sure')"class="btn btn-outline-danger">Delete</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

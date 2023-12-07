@@ -1,0 +1,29 @@
+{% extends 'ADMIN/admin_home_index.html'%}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/admin_edit_charge_post/">
+    {% csrf_token %}
+  <table class="table table-bordered table-hover table-striped">
+      <input type="hidden" name="id" value="{{ data.id }}">
+    <tr>
+      <td>From Unit</td>
+      <td>
+        <input type="text" name="textfield" id="textfield" value="{{ data.Fromunit }}" class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>To Unit</td>
+      <td><input type="text" name="textfield2" id="textfield2" value="{{ data.Tounit }}"class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>Amount </td>
+      <td><input type="text" name="textfield3" id="textfield3" value="{{ data.Amount }}"class="form-control"/></td>
+    </tr>
+    <tr>
+      <td><input type="submit" name="button" id="button" value="Edit" class="btn btn-success"/></td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

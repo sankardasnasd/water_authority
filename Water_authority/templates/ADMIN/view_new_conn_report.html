@@ -1,0 +1,36 @@
+{% extends 'ADMIN/admin_home_index.html'%}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/myapp/view_new_conn_report_post/">
+{% csrf_token %}
+  <table class="table table-hover table-bordered">
+    <tr>
+      <td width="55">From</td>
+      <td width="185"><label for="textfield"></label>
+      <input type="date" name="textfield" id="textfield" /></td>
+      <td width="27">To</td>
+      <td width="175"><label for="textfield2"></label>
+      <input type="date" name="textfield2" id="textfield2" /></td>
+      <td width="63"><input type="submit" name="button" id="button" value="Search" /></td>
+    </tr>
+  </table>
+  <table width="1118" height="102" border="1">
+    <tr>
+      <td width="147">S.No</td>
+      <td width="91">Date</td>
+      <td width="116">User Info</td>
+      <td width="97">Amount</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.Date }}</td>
+      <td>{{ i.USER.Name }}<br>{{ i.USER.Place }}<br>{{ i.USER.Panchayath }}<br>{{ i.USER.District }}<br>{{ i.USER.Pincode }}<br>{{ i.USER.Phone }}
+      </td>
+      <td>&nbsp;{{ i.Amount }}</td>
+      <td width="94"><a href="/myapp/admin_view_connection_approve/{{ i.id }}">Approve</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

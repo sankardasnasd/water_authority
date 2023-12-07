@@ -1,0 +1,24 @@
+{% extends 'Meter_Reader/reader_home_index.html'%}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+ {% csrf_token %}
+  <table class="table table-hover table-bordered">
+    <tr style="background-color: #0a3622">
+      <th>SL.No</th>
+      <th>Assigned Area</th>
+      <td>&nbsp;</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td width="50px">{{ forloop.counter }}</td>
+      <td>{{ i.AREA.District.Dis_name }}<br>{{ i.AREA.Place }}</td>
+      <td width="135px"><a class="btn btn-success" href="/myapp/search_customer_usage_entry/{{ i.AREA.id }}#tab">View Users</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+{% endblock %}
+</body>
+

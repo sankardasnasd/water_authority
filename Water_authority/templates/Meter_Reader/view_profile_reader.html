@@ -1,0 +1,50 @@
+{% extends 'Meter_Reader/reader_home_index.html'%}
+{% block body %}
+<body>
+    <div class="col-md-12">
+<form id="form1" name="form1" method="post" action="">
+    {% csrf_token %}
+  <table align="center" style="width:50%" class="table table-hover table-bordered">
+    <tr>
+      <td colspan="2"><div align="center">
+        <input type="image" name="imageField" id="imageField" img src="{{ data.Photo }}" width="100px"height="100px"/>
+      </div></td>
+    </tr>
+    <tr>
+      <td width="122">Name :</td>
+      <td width="62">{{ data.Name }}</td>
+    </tr>
+    <tr>
+      <td>Phone :</td>
+      <td>{{ data.Phone }}</td>
+    </tr>
+    <tr>
+      <td>Email :</td>
+      <td>{{ data.Email }}</td>
+    </tr>
+    <tr>
+      <td>Gender :</td>
+      <td>{{ data.Gender }}</td>
+    </tr>
+    <tr>
+      <td>DOB :</td>
+      <td>{{ data.Dob }}</td>
+    </tr>
+    <tr>
+      <td>District :</td>
+      <td>{{ data.District }}</td>
+    </tr>
+    <tr>
+      <td>Place :</td>
+      <td>{{ data.Place }}</td>
+    </tr>
+    <tr>
+      <td>Pincode :</td>
+      <td>{{ data.Pincode }}</td>
+    </tr>
+  </table>
+</form>
+    </div>
+{% endblock %}
+</body>
+

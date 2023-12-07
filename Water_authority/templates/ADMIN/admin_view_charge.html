@@ -1,0 +1,28 @@
+{% extends 'ADMIN/admin_home_index.html'%}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table  table-bordered">
+    <tr>
+      <th>Sl.No</th>
+      <th >From Unit</th>
+      <th>To Unit</th>
+      <th>Amount</th>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+        <td width="50px">&nbsp;{{ forloop.counter }}</td>
+        <td>&nbsp;{{ i.Fromunit }}</td>
+        <td>&nbsp;{{ i.Tounit }}</td>
+        <td>&nbsp;{{ i.Amount }}</td>
+        <td width="50px"><a href="/myapp/admin_edit_charge/{{ i.id }}"class="btn btn-success">Edit</a></td>
+        <td width="50px"><a href="/myapp/delete_charge/{{ i.id }}"onclick="return confirm('Are You Sure')"class="btn btn-outline-danger">Delete</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}
